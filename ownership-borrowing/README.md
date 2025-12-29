@@ -72,3 +72,21 @@ fn change_string(some_string: &mut String) {
     some_string.push_str(", world!");
 }
 ```
+---
+
+## 4. [The Data Race Rule (Multiple Mutable References)](./question-4/src/main.rs)
+
+**Concept:** To ensure memory safety, Rust enforces a strict rule: you can have **exactly one** mutable reference to a particular piece of data in a particular scope. 
+
+### Question 4:
+Will the following code compile?
+```rust
+fn main() {
+    let mut s = String::from("Rust");
+
+    let r1 = &mut s;
+    let r2 = &mut s; 
+
+    println!("{}, {}", r1, r2);
+}
+```
