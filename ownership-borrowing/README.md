@@ -90,3 +90,21 @@ fn main() {
     println!("{}, {}", r1, r2);
 }
 ```
+---
+
+## 5. [The "No Mixing" Rule (Immutable + Mutable)](./question-5/src/main.rs)
+
+**Concept:** Rust strictly forbids having a mutable reference (`&mut`) while any immutable references (`&`) to the same data are active. You can have many readers OR one writer, but never both at the same time.
+
+### Question 5:
+Will the following code compile?
+```rust
+fn main() {
+    let mut s = String::from("Rust");
+
+    let r1 = &s;     // Immutable borrow
+    let r2 = &mut s; // Mutable borrow - ERROR HERE
+
+    println!("{}, {}", r1, r2);
+}
+```
