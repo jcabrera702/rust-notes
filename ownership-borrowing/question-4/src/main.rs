@@ -10,4 +10,4 @@ fn main() {
     println!("{},{}", r1, r2);
 }
 
-//This will fail because their are multiple mutable references to s which are r1 and r2
+//This will fail because there are multiple mutable references to s which are r1 and r2
