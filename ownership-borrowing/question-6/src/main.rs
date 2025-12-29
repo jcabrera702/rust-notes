@@ -16,3 +16,10 @@ fn dangle() -> &String { //ERROR HERE
 // This is known as a Dangling Pointer, 
 // and it is a common cause of security vulnerabilities and crashes in languages like C++. 
 // Rust's borrow checker prevents this by ensuring that a reference never outlives the data it points to.
+
+//Fix: Instead of returning a reference, return the ownership of the String itself:
+
+fn no_dangle() -> String {
+    let s = String::from("hello");
+    s // Ownership is moved to the caller
+}
