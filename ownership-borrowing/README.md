@@ -108,3 +108,21 @@ fn main() {
     println!("{}, {}", r1, r2);
 }
 ```
+---
+
+## 6. [Dangling References](./question-6/src/main.rs)
+
+**Concept:** Rust ensures that references always point to valid memory. If you try to return a reference to a value created inside a function, the compiler will stop you because that value is destroyed when the function ends.
+
+### Question 6:
+Will the following code compile?
+```rust
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String { 
+    let s = String::from("hello");
+    &s // ERROR: s is dropped here!
+}
+```
